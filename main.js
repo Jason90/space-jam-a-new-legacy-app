@@ -97,7 +97,8 @@ function displayPlayerCards() {
 
     // For each player, create a player stat card to show the PER for that player for a 
     // specific quarter.
-    for (let [playerName, playerStats] of playerMap.entries()) {
+    var sortedPlayerMap=new Map([...playerMap.entries()].sort((a,b)=>b[1][currentQuarter]-a[1][currentQuarter]));
+    for (let [playerName, playerStats] of sortedPlayerMap) {
         // Create an overall div that will contain the player stat information.
         var playerCard = document.createElement('div');
 
@@ -322,3 +323,21 @@ function startNextQuarter() {
         }
     }, 1000);
 }
+
+function loadDefaultData(){ 
+    fetch('./game_stats.csv')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text(); // 或者 response.json() 如果你期望的是JSON格式
+    })
+    .then(data => {
+        processPlayers(data); // 读取成功，输出文件内容 console.log(data)
+    })
+    .catch(error => {
+        console.error('读取文件失败:', error); // 读取失败，处理错误
+    });
+}
+
+loadDefaultData();

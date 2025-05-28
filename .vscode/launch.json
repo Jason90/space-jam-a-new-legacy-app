@@ -5,17 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to Chrome",
-            "port": 9222,
-            "request": "attach",
-            "type": "chrome",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\JEF\\Code\\Jason\\Sample\\VSC\\space-jam-anl\\space-jam-a-new-legacy-app\\index.html"
+            "file": "c:\\JEF\\Code\\Jason\\Sample\\VSC\\space-jam-anl\\space-jam-a-new-legacy-app\\test.html"
         }
     ]
 }
